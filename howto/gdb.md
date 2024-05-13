@@ -8,7 +8,7 @@ This makes GDB a perfect tool for identifying programming problems!
 
 ## Running a program with GDB
 
-In order to take full advantage of the power of GDB you will need to compile your program with debugging symbols. GCC supports this with the `=-g` parameter.  For instance, compile your program like:
+In order to take full advantage of the power of GDB you will need to compile your program with debugging symbols. GCC supports this with the `-g` parameter.  For instance, compile your program like:
 
 `gcc -g yourcode.c`
 
@@ -75,7 +75,7 @@ Program received signal SIGSEGV, Segmentation fault.
 (gdb)
 ```
 
-This let's us know that the problem occured in `example.c` on line `14`, where the `printf()` function was used to print the person's name. Further, we can see that the `p` variable was set to `0` when passed as an argument to the `print_person()` function, which likely explains the problem, a null pointer dereference.
+This let's us know that the problem occured in `example.c` on line `14`, where the `printf()` function was used to print the person's name. Further, we can see that the `p` variable was set to `0x0` (i.e. NULL) when passed as an argument to the `print_person()` function, which likely explains the problem, a null pointer dereference.
 
 To check the value of a specific variable such as `p`, you may use the `print` command, like:
 
