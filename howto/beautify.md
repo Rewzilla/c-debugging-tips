@@ -1,6 +1,6 @@
 # Beautifying your code
 
-_"Beautify"_ing your code is the process of cleaning up the formatting to make it more readable. In many cases compiler errors and warnings are the result of simple syntax problems which are difficult to spot due to bad formatting, but become immediatly obvious when the code is cleanly formatted.
+"Beautify"ing your code is the process of cleaning up the formatting to make it more readable. In many cases compiler errors and warnings are the result of simple syntax problems which are difficult to spot due to bad formatting, but become immediatly obvious when the code is cleanly formatted.
 
 This might seem like an arduous task, but luckily there are automatted tools which can handle it for us! It will absolutely be worth your time and effort to cleanly format your code.
 
@@ -57,17 +57,9 @@ The following tools are demonstrated below.
 
 Note that these may not be installed by default!  If you are using the `cs.dsunix.net` or `dev.hostbin.org` machines, you may need to request that they be installed; ask your teacher. However if you wish to run these on your own machine you should be able to install them by running one of the following commands (depending on your operating system).
 
-### Debian/Ubuntu
-
-`sudo apt install indent astyle clang-format`
-
-### Fedora/Redhat/CentOS
-
-`TODO`
-
-### Arch
-
-`TODO`
+ - Debian/Ubuntu: `sudo apt install indent astyle clang-format`
+ - Fedora/Redhat/CentOS: `TODO`
+ - Arch: `TODO`
 
 ## GNU Indent
 
