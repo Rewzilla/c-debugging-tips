@@ -23,12 +23,12 @@ The most common problems that students face fall into two categories:
 Any/all of the following may be helpful in resolving compile time issues.
 
  - [Beautify the code](howto/beautify.md).
- - [Compile with verbose warning/error messages](howto/compile-flags.md).
 
 ### Resolving run time issues
 
 Any/all of the following may be helpful in resolving run time issues.
 
+ - [Compile with verbose warning/error messages](howto/compile-flags.md).
  - [Run with GDB to isolate crashes](howto/gdb.md).
  - [Run with Valgrind to detect heap memory corruption](howto/valgrind.md).
  - [Compile with ASAN to detect memory corruption](howto/asan.md).

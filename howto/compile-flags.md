@@ -32,7 +32,7 @@ andrew@dev:~$ ./a.out
 Segmentation fault
 ```
 
-However when compiled with the extra flags, GCC warns the programmer of the problem, even giving the exact line and location where the issue was noted!
+However when compiled with these additional flags, GCC warns the programmer of the problem, even giving the exact line and location where the issue was noted!  The error message is less helpful (maybe we haven't yet learned what `int *` means), but this gives you a clue as to where the problem is and where a fix is likely needed.
 
 ```
 andrew@dev:~$ gcc -Wall -Wextra example.c
@@ -43,9 +43,7 @@ example.c:4:11: warning: format ‘%d’ expects argument of type ‘int *’, b
       |           |   |
       |           |   int
       |           int *
-example.c:4:3: warning: ‘i’ is used uninitialized [-Wuninitialized]
-    4 |   scanf("%d", i);
-      |   ^~~~~~~~~~~~~~
+...
 example.c:3:7: note: ‘i’ was declared here
     3 |   int i;
       |       ^
