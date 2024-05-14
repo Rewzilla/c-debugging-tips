@@ -1,6 +1,6 @@
 # How to use Valgrind
 
-Valgrind is a tool which can monitor a program as it runs and _immediately_ report problems as they occur. This is extremely powerful because often memory corruption may happen silently in the background and won't become evident until later on in the program's execution. This makes it difficult to track down the root cause of the bug, since we are only investigating the side-effects, not the problem itself.  Valgrind solves this by observing everything the program does and _immediately_ throwing an error when memory corruption initially occurs.
+Valgrind is a tool which can monitor a program as it runs and _immediately_ report problems as they occur. This is extremely powerful because memory corruption often happens silently in the background and won't become evident until later on when the side-effects cause observable problems. This makes it difficult to track down the root cause of the bug, since we are only investigating the eventual side-effects of the bug, not the bug itself.  Valgrind solves this by observing everything the program does and _immediately_ throwing an error when memory corruption initially occurs.
 
 Examining a program with Valgrind is very easy.  Simply compile your program with debugging symbols (the `-g` flag) and then run it with `valgrind ...`.  For instance...
 
@@ -11,7 +11,7 @@ valgrind ./a.out
 
 ## Example
 
-Consider the following program which is meant to generate a set of 10 integers, set them all to `99`, and then print them.  These integers are stored on the heap, using a block of memory allocated with `malloc()`.
+Consider the following program which is meant to generate a set of 10 integers, set them all to `99`, and then print them.  These integers are stored on the heap in a block of memory allocated with `malloc()`.
 
 ```c
 #include <stdio.h>
@@ -103,7 +103,7 @@ Starting from the top, the first relevent block of information is:
 ==42905==    by 0x10915A: main (example.c:8)
 ```
 
-Valgrind has detected an `invalid write`, meaning that we wrote data to a memory location that we shouldn't have. This is most commonly caused by writing data beyond the end of an array, or occasionally at a negative index before it.
+Valgrind has detected an "invalid write", meaning that we wrote data to a memory location that we shouldn't have. This is most commonly caused by writing data beyond the end of an array, or occasionally at a negative index before it.
 
 More specifically, Valgrind reported that the invalid write occured at `example.c:14` and that the data was written `0 bytes after a block of size 40 alloc'd`. This means the bug is in `example.c` on line `14`, and we wrote data just to the beyond a block of data that was allocated for us to use. Further, Valgrind reports that the allocated block which we wrote beyond was previously allocated by `malloc()`, which was called by `main()` in `example.c` on line `8`.
 
@@ -120,12 +120,12 @@ Putting this all together...
  2. The program accidentally wrote data _beyond_ that block in `example.c` at line `11`.
 
     ```c
-    10     for (i=0; i<=10; i++)
-    11         nums[i] = 99;
-    12
+    10:     for (i=0; i<=10; i++)
+    11:         nums[i] = 99;
+    12:
 	```
 
-Now the issue is obvious! The loop must have gone too far, copying too many integers into the array and overflowing beyond its end. Do you see why? Looks like a simple off-by-one bug; the counter begins at 0 (`for (i=0; `), but continues up to and _including_ 10 (`; i<=10; i++)`) which means the loop actually runs 11 times. Whoops! That would have been hard to spot based on the first error message, but Valgrind helped us zero in on the problem.
+Now the issue is obvious! The loop must have gone too far, copying too many integers into the array and overflowing beyond its end. Do you see why? Looks like a simple off-by-one bug. The counter begins at 0 (`for (i=0; `), but continues up to and _including_ 10 (`; i<=10; i++)`) which means the loop actually runs 11 times. Whoops! That would have been hard to spot based on the first error message, but Valgrind helped us hone in on the problem.
 
 Now let's see if we can solve the second bug. The second relevent block of information that Valgrind gave us was:
 
