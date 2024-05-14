@@ -139,11 +139,11 @@ Analyzing the bug details, we can see how this might occur given the following s
     19:
     20:        switch (choice) {
     21:        case 1:
-    ````
+    ```
 
  4. At line 12, a value is written to `p->id`, thus dereferencing a pointer which is not yet defined!
 
-    ````c
+    ```c
     24:        case 2:
     25:            p->id = 1234;
     26:
