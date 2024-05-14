@@ -9,6 +9,8 @@ gcc -g yourcode.c
 valgrind ./a.out
 ```
 
+Note: Valgrind is similar to [ASAN](asan.md) in what it can do, but different it how it accomplishes that.  [ASAN](asan.md) needs to be compiled directly into the program itself at build time, where-as Valgrind is able to observe the program running without having been compiled into it.
+
 ## Example
 
 Consider the following program which is meant to generate a set of 10 integers, set them all to `99`, and then print them.  These integers are stored on the heap in a block of memory allocated with `malloc()`.
