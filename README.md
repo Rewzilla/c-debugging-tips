@@ -32,7 +32,7 @@ Alternatively, if you have a specific problem or question, the next section list
 
  - **Q:** Help! My program prints _junk_ data.
 
-   A: Sounds like you may be using an uninitialized variable, or printing from invalid memory.  Try [scan-build](howto/scan-build.md) to identify potential causes.
+   **A:** Sounds like you may be using an uninitialized variable, or printing from invalid memory.  Try [scan-build](howto/scan-build.md) to identify potential causes.
 
  - **Q:** Help!  My program locks up or runs forever.
 
