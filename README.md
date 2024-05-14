@@ -12,22 +12,9 @@ The guide is written and maintained by DSU faculty, primarily for DSU students i
 
 ## How to use this guide
 
-The most common problems that students face fall into two categories:
+The tools below are all explained and demonstrated in this guide.  If you'd just like to dive in and learn more about debugging C program problems, feel free to go through these in any order.  The time and effort you invest in learning this tools now will save you countless hours and frustration in the future!
 
- - **Compile time issues**: i.e. problems with the code structure which prevent it from building in the first place. These may cause the compiler to throw errors or warnings and result in no runable program being generated.
-
- - **Run time issues:** i.e. problems which only appear after the program has been compiled and run. These may result in segmentation faults, memory corruption warnings, non-determenistic behavior, or even _junk_ data being printed.
-
-### Resolving compile time issues
-
-Any/all of the following may be helpful in resolving compile time issues.
-
- - [Beautify the code](howto/beautify.md).
-
-### Resolving run time issues
-
-Any/all of the following may be helpful in resolving run time issues.
-
+ - [Beautify your code](howto/beautify.md).
  - [Compile with verbose warning/error messages](howto/compile-flags.md).
  - [Run with GDB to isolate crashes](howto/gdb.md).
  - [Run with Valgrind to detect heap memory corruption](howto/valgrind.md).
@@ -35,19 +22,21 @@ Any/all of the following may be helpful in resolving run time issues.
  - [Compile with scan-build to detect subtle bugs](howto/scan-build.md).
  - [Run CCPCheck to detect subtle bugs](howto.md).
 
+Alternatively, if you have a specific problem or question, the next section lists common problems that students encounter and links to specific resources that might be helpful to resolve it.  If you need immediate help on a specific issue, check the list below for the relevant guide(s).
+
 ## Specific problems and questions
 
- - Q: Help! My program says "Segmentation fault" and crashes.
+ - **Q:** Help! My program says "Segmentation fault" and crashes.
 
-   A: Likely a memory corruption bug.  Try [GDB](howto/gdb.md), [Valgrind](howto/valgrind.md), or [ASAN](howto/asan.md).
+   **A:** Likely a memory corruption bug.  Try [GDB](howto/gdb.md), [Valgrind](howto/valgrind.md), or [ASAN](howto/asan.md).
 
- - Q: Help! My program prints _junk_ data.
+ - **Q:** Help! My program prints _junk_ data.
 
    A: Sounds like you may be using an uninitialized variable, or printing from invalid memory.  Try [scan-build](howto/scan-build.md) to identify potential causes.
 
- - Q: Help!  My program locks up or runs forever.
+ - **Q:** Help!  My program locks up or runs forever.
 
-   A: This may be an infinite loop.  Try [scan-build](howto/scan-build.md) to identify potential causes.
+   **A:** This may be an infinite loop.  Try [scan-build](howto/scan-build.md) to identify potential causes.
 
 ## Questions or suggestions
 
