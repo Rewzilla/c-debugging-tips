@@ -103,4 +103,64 @@ Once open, you should see a list of bugs like this:
 
 ![scan-build output index file showing four bugs](../images/scan-build-1.png)
 
+Take a look through the output and note what you see.  You may display or hide individual bugs with the checkboxes in the second box.  The third box shows a list of bugs found, referencing the file, function, and line number they occured on.  Additionally a "path length" is shown which represents the number of steps required in order to trigger that particular bug.  In other words, how many prerequisits must be met in order to reach it (specific inputs, loop iterations, function calls, if/else branches, etc).  To examine a specific bug, click "View Report" and a seperate browser window will be opened.
+
+For eample, let's view this first bug in the list, a "Dereference of undefined pointer value" in the `main()` function within `example.c` on line `25`.  It has a path length of `4`.
+
+![scan-build bug walkthrough details](../images/scan-build-2.png)
+
+Neat!  Scan-build has identified that the program might be able to dereference an undefined pointer, and shows us every single step required in order to reach that condition.  Four steps are required, and each is labeled in the source code to explain how it could happen.  Note that you can click the forward (->) and backward (<-) arrows on each box to jump to the next or previous box respectively.
+
+Note also that if your code is large and complex you can also choose to hide the irrelvant lines, and/or display control-flow arrows by checking the boxes at the top.  For instance, here is a simplified version using both of those options.
+
+![scan-build simplified bug walkthrough details](../images/scan-build-3.png)
+
+Analyzing the bug details, we can see how this might occur given the following steps:
+
+ 1. The `struct item *p` is declared on line 13, but not given a value.
+
+    ```c
+    12:
+    13:    struct item *p;
+    14:
+    ```
+
+ 2. The loop condition is true (always) on line 15, so we enter the loop body.
+
+    ```c
+    14:
+    15:    while(1) {
+    16:
+    ```
+
+ 3. We assume that the switch/case statement on line 20 jumps to "case 2" on line 24.
+
+    ```c
+    19:
+    20:        switch (choice) {
+    21:        case 1:
+    ````
+
+ 4. At line 12, a value is written to `p->id`, thus dereferencing a pointer which is not yet defined!
+
+    ````c
+    24:        case 2:
+    25:            p->id = 1234;
+    26:
+    ```
+
+This clearly lays out what the problem is and how it might occur.  We can now take whatever steps are necessary to resolve the issue.  Following this bug, we could similarlly analyze and patch the other three, ensuring our program will never fail under those specific conditions.  In total, scan-build was able to identify four unique bugs.  Note that although two are caused by the same line of code, all four are unique in how they can be triggered and what effect they will have!
+
+ 1. A dereference of undefined pointer, in `example.c` on line `25`.
+ 2. A double free, in `example.c` on line `29`.
+ 3. An uninitialized argument value, in `example.c` on line `29`.
+ 4. A use-after-free, in `example.c` on line `25`.
+
 ## Requirements
+
+
+Note that scan-build may not be installed by default!  If you are using the `cs.dsunix.net` or `dev.hostbin.org` machines, you may need to request that they be installed; ask your teacher. However if you wish to use scan-build on your own machine you should be able to install it by running one of the following commands (depending on your operating system).
+
+ - Debian/Ubuntu: `sudo apt install clang-tools`
+ - Fedora/Redhat/CentOS: `TODO`
+ - Arch: `TODO`
