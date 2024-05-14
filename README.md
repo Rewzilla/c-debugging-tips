@@ -26,13 +26,17 @@ Alternatively, if you have a specific problem or question, the next section list
 
 ## Specific problems and questions
 
+ - **Q:** Help! My program compiles fine, but does something unexpected or wrong when run.
+
+   **A:** Sounds like a problem with your code structure or algorithm. If you haven't already, consider [beautifying](howto/beautify.md) your code, which will make it easier to reason about.
+
  - **Q:** Help! My program says "Segmentation fault" and crashes.
 
    **A:** Likely a memory corruption bug.  Try [GDB](howto/gdb.md), [Valgrind](howto/valgrind.md), or [ASAN](howto/asan.md).
 
  - **Q:** Help! My program prints _junk_ data.
 
-   **A:** Sounds like you may be using an uninitialized variable, or printing from invalid memory.  Try [scan-build](howto/scan-build.md) to identify potential causes.
+   **A:** Sounds like you may be using an uninitialized variable, or printing from invalid memory.  Try [scan-build](howto/scan-build.md) to identify potential causes.  [Valgrind](howto/valgrind.md) or [ASAN](howto/asan.md) might also be able to detect where/why this is happening at runtime.
 
  - **Q:** Help!  My program locks up or runs forever.
 
