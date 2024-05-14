@@ -101,6 +101,6 @@ We can see that scan-build detected several bugs (use of free'd memory, uninitia
 
 Once open, you should see a list of bugs like this:
 
-![scan-build output index file showing four bugs][../images/scan-build-1.png]
+![scan-build output index file showing four bugs](../images/scan-build-1.png)
 
 ## Requirements
