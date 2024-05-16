@@ -14,13 +14,13 @@ The guide is written and maintained by DSU faculty, primarily for DSU students i
 
 The tools below are all explained and demonstrated in this guide.  If you'd just like to dive in and learn more about debugging C program problems, feel free to go through these in any order.  The time and effort you invest in learning this tools now will save you countless hours and frustration in the future!
 
- - [Beautify your code](howto/beautify.md).
- - [Compile with verbose warning/error messages](howto/compile-flags.md).
- - [Run with GDB to isolate crashes](howto/gdb.md).
- - [Run with Valgrind to detect heap memory corruption](howto/valgrind.md).
- - [Compile with ASAN to detect memory corruption](howto/asan.md).
- - [Compile with scan-build to detect subtle bugs](howto/scan-build.md).
- - [Run CCPCheck to detect subtle bugs](howto.md).
+ - [Beautify your code](guides/beautify.md).
+ - [Compile with verbose warning/error messages](guides/compile-flags.md).
+ - [Run with GDB to isolate crashes](guides/gdb.md).
+ - [Run with Valgrind to detect heap memory corruption](guides/valgrind.md).
+ - [Compile with ASAN to detect memory corruption](guides/asan.md).
+ - [Compile with scan-build to detect subtle bugs](guides/scan-build.md).
+ - [Run CCPCheck to detect subtle bugs](guides.md).
 
 Alternatively, if you have a specific problem or question, the next section lists common problems that students encounter and links to specific resources that might be helpful to resolve it.  If you need immediate help on a specific issue, check the list below for the relevant guide(s).
 
@@ -28,19 +28,19 @@ Alternatively, if you have a specific problem or question, the next section list
 
  - **Q:** Help! My program compiles fine, but doesn't behave the way I think it should.
 
-   **A:** This might be a problem with your code structure or algorithm. If you haven't already, consider [beautifying](howto/beautify.md) your code, which will make it easier to reason about.
+   **A:** This might be a problem with your code structure or algorithm. If you haven't already, consider [beautifying](guides/beautify.md) your code, which will make it easier to reason about.
 
  - **Q:** Help! My program says "Segmentation fault", "Aborted", or some other cryptic error and crashes.
 
-   **A:** Likely a memory corruption bug.  Try [GDB](howto/gdb.md), [Valgrind](howto/valgrind.md), or [ASAN](howto/asan.md).
+   **A:** Likely a memory corruption bug.  Try [GDB](guides/gdb.md), [Valgrind](guides/valgrind.md), or [ASAN](guides/asan.md).
 
  - **Q:** Help! My program prints _junk_ data
 
-   **A:** Sounds like you may be using an uninitialized variable, or printing from invalid memory.  Try [scan-build](howto/scan-build.md) to identify potential causes.  [Valgrind](howto/valgrind.md) or [ASAN](howto/asan.md) might also be able to detect where/why this is happening at run time.
+   **A:** Sounds like you may be using an uninitialized variable, or printing from invalid memory.  Try [scan-build](guides/scan-build.md) to identify potential causes.  [Valgrind](guides/valgrind.md) or [ASAN](guides/asan.md) might also be able to detect where/why this is happening at run time.
 
  - **Q:** Help!  My program locks up or runs forever.
 
-   **A:** This may be an infinite loop.  Try running the program in [GDB](howto/gdb.md) up to the point it gets stuck, then press `CTRL + C` to pause it, allowing you to see what part of the code it's stuck in.
+   **A:** This may be an infinite loop.  Try running the program in [GDB](guides/gdb.md) up to the point it gets stuck, then press `CTRL + C` to pause it, allowing you to see what part of the code it's stuck in.
 
 ## Questions or suggestions
 
