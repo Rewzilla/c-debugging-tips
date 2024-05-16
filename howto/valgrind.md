@@ -43,7 +43,7 @@ Fatal glibc error: malloc assertion failure in sysmalloc: (old_top == initial_to
 Aborted
 ```
 
-Without a deep understanding of system internals, this error message isn't terribly helpful. Luckily Valgrind can quickly identify exactly where the problem occured and what went wrong! Let's compile the program with debug symbols and run it with Valgrind.
+Without a deep understanding of system internals, this error message isn't terribly helpful. Luckily Valgrind can quickly identify exactly where the problem occurred and what went wrong! Let's compile the program with debug symbols and run it with Valgrind.
 
 ```
 andrew@dev:~$ gcc -g example.c
@@ -95,7 +95,7 @@ andrew@dev:~$ valgrind ./a.out
 
 This looks complicated, but let's break it down and see that it's really quite simple.  First, in the summary at the end notice that there were actually _two_ errors detected at run time (`ERROR SUMMARY: 2 errors from 2 contexts ...`).  We will need to understand and address both.
 
-Starting from the top, the first relevent block of information is:
+Starting from the top, the first relevant block of information is:
 
 ```
 ==42905== Invalid write of size 4
@@ -107,7 +107,7 @@ Starting from the top, the first relevent block of information is:
 
 Valgrind has detected an "invalid write", meaning that we wrote data to a memory location that we shouldn't have. This is most commonly caused by writing data beyond the end of an array, or occasionally at a negative index before it.
 
-More specifically, Valgrind reported that the invalid write occured at `example.c:14` and that the data was written `0 bytes after a block of size 40 alloc'd`. This means the bug is in `example.c` on line `14`, and we wrote data just to the beyond a block of data that was allocated for us to use. Further, Valgrind reports that the allocated block which we wrote beyond was previously allocated by `malloc()`, which was called by `main()` in `example.c` on line `8`.
+More specifically, Valgrind reported that the invalid write occurred at `example.c:14` and that the data was written `0 bytes after a block of size 40 alloc'd`. This means the bug is in `example.c` on line `14`, and we wrote data just to the beyond a block of data that was allocated for us to use. Further, Valgrind reports that the allocated block which we wrote beyond was previously allocated by `malloc()`, which was called by `main()` in `example.c` on line `8`.
 
 Putting this all together...
 
@@ -129,7 +129,7 @@ Putting this all together...
 
 Now the issue is obvious! The loop must have gone too far, copying too many integers into the array and overflowing beyond its end. Do you see why? Looks like a simple off-by-one bug. The counter begins at 0 (`for (i=0; `), but continues up to and _including_ 10 (`; i<=10; i++)`) which means the loop actually runs 11 times. Whoops! That would have been hard to spot based on the first error message, but Valgrind helped us hone in on the problem.
 
-Now let's see if we can solve the second bug. The second relevent block of information that Valgrind gave us was:
+Now let's see if we can solve the second bug. The second relevant block of information that Valgrind gave us was:
 
 ```
 ==42905== Invalid read of size 4
@@ -157,7 +157,7 @@ Breaking this down as we did above, we can see that...
     15
 	```
 
-Aha, looks like a second occurence of the same bug! Another simple off-by-one mistake. Removing the two equals signs from these for-loops resolves both issues.
+Aha, looks like a second occurrence of the same bug! Another simple off-by-one mistake. Removing the two equals signs from these for-loops resolves both issues.
 
 ## Requirements
 

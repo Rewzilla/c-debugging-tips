@@ -8,7 +8,7 @@ Scan-build can be invoked by simply adding `scan-build` at the beginning of the 
 scan-build gcc yourcode.c
 ```
 
-When run like this, scan-build will generate a set of HTML (webpage) files describing each bug in great detail.  By default these are stored in a temoporary directory like `/tmp/scan-build-2024-05-14-153955-1542-1`.
+When run like this, scan-build will generate a set of HTML (web page) files describing each bug in great detail.  By default these are stored in a temporary directory like `/tmp/scan-build-2024-05-14-153955-1542-1`.
 
 If you are running scan-build _locally_ (such as in a VM on your own computer), then you can simply run `scan-view /tmp/scan-build-.....` to view them.  This will open a web browser where you can review the results.
 
@@ -16,9 +16,9 @@ These files are not easily viewable on the command line though, so if you are ru
 
 ## Example
 
-Consider the following program which is meant to create, setup, and delete "items".  As we can see the program runs in a loop, each time asking the user what action to take (by inputing a number 1-3), and then taking that action.
+Consider the following program which is meant to create, setup, and delete "items".  As we can see the program runs in a loop, each time asking the user what action to take (by inputting a number 1-3), and then taking that action.
 
- - When the user enters `1`, the program will allocate a bnew `struct item` structure.
+ - When the user enters `1`, the program will allocate a new `struct item` structure.
  - When the user enters `2`, the program will set the `id` and `desc` members of that structure.
  - When the user enters `3`, the program will free the structure, thus deleting it.
 
@@ -97,23 +97,23 @@ scan-build: 4 bugs found.
 scan-build: Run 'scan-view /tmp/scan-build-2024-05-14-160305-1736-1' to examine bug reports.
 ```
 
-We can see that scan-build detected several bugs (use of free'd memory, uninitialized variable usage, etc), however it's not immediatly clear how or why that occured.  In the command line output scan-build indicated there was a problem but didn't explain why.  To see a full explaination, run `scan-view /tmp/scan-build-2024-05-14-160305-1736-1`. Remember that if you are running scan-build on a remote server, you will instead need to first download that folder of files and then open the `index.html` file within!
+We can see that scan-build detected several bugs (use of freed memory, uninitialized variable usage, etc), however it's not immediately clear how or why that occurred.  In the command line output scan-build indicated there was a problem but didn't explain why.  To see a full explanation, run `scan-view /tmp/scan-build-2024-05-14-160305-1736-1`. Remember that if you are running scan-build on a remote server, you will instead need to first download that folder of files and then open the `index.html` file within!
 
 Once open, you should see a list of bugs like this:
 
 ![scan-build output index file showing four bugs](../images/scan-build-1.png)
 
-Take a look through the output and note what you see.  You may display or hide individual bugs with the checkboxes in the second box.  The third box shows a list of bugs found, referencing the file, function, and line number they occured on.  Additionally a "path length" is shown which represents the number of steps required in order to trigger that particular bug.  In other words, how many prerequisits must be met in order to reach it (specific inputs, loop iterations, function calls, if/else branches, etc).  To examine a specific bug, click "View Report" and a seperate browser window will be opened.
+Take a look through the output and note what you see.  You may display or hide individual bugs with the check boxes in the second box.  The third box shows a list of bugs found, referencing the file, function, and line number they occurred on.  Additionally a "path length" is shown which represents the number of steps required in order to trigger that particular bug.  In other words, how many prerequisites must be met in order to reach it (specific inputs, loop iterations, function calls, if/else branches, etc).  To examine a specific bug, click "View Report" and a separate browser window will be opened.
 
-For eample, let's view this first bug in the list, a "Dereference of undefined pointer value" in the `main()` function within `example.c` on line `25`.  It has a path length of `4`.
+For example, let's view this first bug in the list, a "Dereference of undefined pointer value" in the `main()` function within `example.c` on line `25`.  It has a path length of `4`.
 
-![scan-build bug walkthrough details](../images/scan-build-2.png)
+![scan-build bug walk through details](../images/scan-build-2.png)
 
 Neat!  Scan-build has identified that the program might be able to dereference an undefined pointer, and shows us every single step required in order to reach that condition.  Four steps are required, and each is labeled in the source code to explain how it could happen.  Note that you can click the forward (->) and backward (<-) arrows on each box to jump to the next or previous box respectively.
 
-Note also that if your code is large and complex you can also choose to hide the irrelvant lines, and/or display control-flow arrows by checking the boxes at the top.  For instance, here is a simplified version using both of those options.
+Note also that if your code is large and complex you can also choose to hide the irrelevant lines, and/or display control-flow arrows by checking the boxes at the top.  For instance, here is a simplified version using both of those options.
 
-![scan-build simplified bug walkthrough details](../images/scan-build-3.png)
+![scan-build simplified bug walk through details](../images/scan-build-3.png)
 
 Analyzing the bug details, we can see how this might occur given the following steps:
 
@@ -149,7 +149,7 @@ Analyzing the bug details, we can see how this might occur given the following s
     26:
     ```
 
-This clearly lays out what the problem is and how it might occur.  We can now take whatever steps are necessary to resolve the issue.  Following this bug, we could similarlly analyze and patch the other three, ensuring our program will never fail under those specific conditions.  In total, scan-build was able to identify four unique bugs.  Note that although two are caused by the same line of code, all four are unique in how they can be triggered and what effect they will have!
+This clearly lays out what the problem is and how it might occur.  We can now take whatever steps are necessary to resolve the issue.  Following this bug, we could similarly analyze and patch the other three, ensuring our program will never fail under those specific conditions.  In total, scan-build was able to identify four unique bugs.  Note that although two are caused by the same line of code, all four are unique in how they can be triggered and what effect they will have!
 
  1. A dereference of undefined pointer, in `example.c` on line `25`.
  2. A double free, in `example.c` on line `29`.

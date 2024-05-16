@@ -1,8 +1,8 @@
 # Beautifying your code
 
-"Beautify"ing your code is the process of cleaning up the formatting to make it more readable. In many cases compiler errors and warnings are the result of simple syntax problems which are difficult to spot due to bad formatting, but become immediatly obvious when the code is cleanly formatted.
+"Beautify"ing your code is the process of cleaning up the formatting to make it more readable. In many cases compiler errors and warnings are the result of simple syntax problems which are difficult to spot due to bad formatting, but become immediately obvious when the code is cleanly formatted.
 
-This might seem like an arduous task, but luckily there are automatted tools which can handle it for us! It will absolutely be worth your time and effort to cleanly format your code.
+This might seem like an arduous task, but luckily there are automated tools which can handle it for us! It will absolutely be worth your time and effort to cleanly format your code.
 
 ## Example
 
@@ -20,7 +20,7 @@ int main() {int i, j;
 }
 ```
 
-When run, this program instead prints the items all in one long list.  Due to the poor formatting it is not immediatly evident why, or how to best fix it.
+When run, this program instead prints the items all in one long list.  Due to the poor formatting it is not immediately evident why, or how to best fix it.
 
 ```
 andrew@dev:~$ gcc example.c 

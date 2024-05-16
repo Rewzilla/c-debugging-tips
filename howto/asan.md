@@ -1,10 +1,10 @@
 # How to use the AddressSanitizer (ASAN)
 
-The AddressSanitizer (ASAN) is a compile-time instrumentation module which allows a program to _immediatly_ detect run time errors and print verbose diagnostic information about what went wrong. In other words, ASAN can be compiled into your program when you build it and will identify problems that occur when the program is run.  ASAN can detect all kinds of bugs, including buffer overflows, use after frees, double frees, and memory leaks.
+The AddressSanitizer (ASAN) is a compile-time instrumentation module which allows a program to _immediately_ detect run time errors and print verbose diagnostic information about what went wrong. In other words, ASAN can be compiled into your program when you build it and will identify problems that occur when the program is run.  ASAN can detect all kinds of bugs, including buffer overflows, use after frees, double frees, and memory leaks.
 
-This is useful in debugging subtle bugs because often times a bug may corrupt memory silently in the background with no immediate observable affect, and this issue won't be noticable until later on in the program's execution when the side-effects of that corruption causes an observable crash. That makes it difficult to identify the true root cause, since we are only ever able to investigate its side-effects down the line.
+This is useful in debugging subtle bugs because often times a bug may corrupt memory silently in the background with no immediate observable affect, and this issue won't be noticeable until later on in the program's execution when the side-effects of that corruption causes an observable crash. That makes it difficult to identify the true root cause, since we are only ever able to investigate its side-effects down the line.
 
-ASAN solves this compiling in additional run time checks which cause the program to fail _immediatly_ when the first problem occurs and print detailed information about what happened.
+ASAN solves this compiling in additional run time checks which cause the program to fail _immediately_ when the first problem occurs and print detailed information about what happened.
 
 Debugging a program with ASAN is very easy.  Simply compile your program with the `clang` compiler, add ASAN (the `-fsanitize=address` flag), add debugging symbols (the `-g` flag) and then run it.  For instance...
 
@@ -13,7 +13,7 @@ clang -fsanitize=address -g yourcode.c
 ./a.out
 ```
 
-Note: ASAN is similar to [Valgrind](valgrind.md) in it's capabilities, but different in how it acheives them.  ASAN needs to be compiled directly into the code itself, where-as [Valgrind](valgrind.md) can monitor the program as it runs without having been compiled in.
+Note: ASAN is similar to [Valgrind](valgrind.md) in it's capabilities, but different in how it achieves them.  ASAN needs to be compiled directly into the code itself, where-as [Valgrind](valgrind.md) can monitor the program as it runs without having been compiled in.
 
 ## Example
 
@@ -47,7 +47,7 @@ Fatal glibc error: malloc assertion failure in sysmalloc: (old_top == initial_to
 Aborted
 ```
 
-Without a deep understanding of system internals, this error message isn't terribly helpful. Luckily ASAN can quickly identify exactly where the problem occured and what went wrong! Let's compile the program with ASAN and run it again.
+Without a deep understanding of system internals, this error message isn't terribly helpful. Luckily ASAN can quickly identify exactly where the problem occurred and what went wrong! Let's compile the program with ASAN and run it again.
 
 ```
 andrew@dev:~$ clang -fsanitize=address example.c -g
@@ -118,9 +118,9 @@ allocated by thread T0 here:
     #2 0x7f48bf440249 in __libc_start_call_main csu/../sysdeps/nptl/libc_start_call_main.h:58:16
 ```
 
-Let's break this down to understant what each piece means.  First, ASAN reports that this is a `heap-buffer-overflow` error.  That's helpful!  We now know that the bug was due to an array being overflowed, and that array was on the heap.
+Let's break this down to understand what each piece means.  First, ASAN reports that this is a `heap-buffer-overflow` error.  That's helpful!  We now know that the bug was due to an array being overflowed, and that array was on the heap.
 
-Next, ASAN tells us that this was a `WRITE` bug, meaning that we were trying to _store_ data outside the bounds of that heap buffer (as opposed to reading it).  The write occured in the `main()` function within `/home/andrew/example.c:11:11` (i.e. our `example.c` file on line `11` at column `11`.  This is where the program misbehaved by writing outside the bounds of an array.
+Next, ASAN tells us that this was a `WRITE` bug, meaning that we were trying to _store_ data outside the bounds of that heap buffer (as opposed to reading it).  The write occurred in the `main()` function within `/home/andrew/example.c:11:11` (i.e. our `example.c` file on line `11` at column `11`.  This is where the program misbehaved by writing outside the bounds of an array.
 
 Further, ASAN reports that the array being overflowed was allocated by the `main()` function within `/home/andrew/example.c:8:9` (i.e. our `example.c` file on line `8` at column `9`).
 

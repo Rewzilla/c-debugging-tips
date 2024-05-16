@@ -24,7 +24,7 @@ The program will now run until completion, or until it crashes.  If you see a me
 
 ## Identifying why a program crashed
 
-Assuming the program crashed, GDB should display the exact line from your source file where the crash occured.  For instance, consider the following example program which contains a bug (incomplete function).
+Assuming the program crashed, GDB should display the exact line from your source file where the crash occurred.  For instance, consider the following example program which contains a bug (incomplete function).
 
 ```c
 #include <stdio.h>
@@ -75,7 +75,7 @@ Program received signal SIGSEGV, Segmentation fault.
 (gdb)
 ```
 
-This let's us know that the problem occured in `example.c` on line `14`, where the `printf()` function was used to print the person's name. Further, we can see that the `p` variable was set to `0x0` (i.e. NULL) when passed as an argument to the `print_person()` function, which likely explains the problem, a null pointer dereference.
+This let's us know that the problem occurred in `example.c` on line `14`, where the `printf()` function was used to print the person's name. Further, we can see that the `p` variable was set to `0x0` (i.e. NULL) when passed as an argument to the `print_person()` function, which likely explains the problem, a null pointer dereference.
 
 To check the value of a specific variable such as `p`, you may use the `print` command, like:
 
@@ -84,7 +84,7 @@ To check the value of a specific variable such as `p`, you may use the `print` c
 $1 = (struct person *) 0x0
 ```
 
-If you would like to see a backtrace (i.e. list of functions calls showing how we got to this point in the program), you can simply type `backtrace`.  Here we see that `main()` called `print_person()` from `example.c` at line `21`, and `print_person()` reached line `14` before crashing.  If many more functions had been called along the way to reach this point, they would be shown here.
+If you would like to see a back trace (i.e. list of functions calls showing how we got to this point in the program), you can simply type `backtrace`.  Here we see that `main()` called `print_person()` from `example.c` at line `21`, and `print_person()` reached line `14` before crashing.  If many more functions had been called along the way to reach this point, they would be shown here.
 
 ```
 (gdb) backtrace 
@@ -94,7 +94,7 @@ If you would like to see a backtrace (i.e. list of functions calls showing how w
 
 ## Command line arguments and file input
 
-If your program takes any command line arguments, (for instance maybe a file called `input.txt`), you can add those with the `--args` parameterat load time, like:
+If your program takes any command line arguments, (for instance maybe a file called `input.txt`), you can add those with the `--args` parameter at load time, like:
 
 `gdb --args ./a.out input.txt`
 

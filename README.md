@@ -6,7 +6,7 @@ The following guide provides tips and tricks for debugging C programs.
 
 ## Intended audience
 
-This guide is intended for students who are new to C programming and need help determining the cause of segmentation faults or other runtime problems.
+This guide is intended for students who are new to C programming and need help determining the cause of segmentation faults or other run time problems.
 
 The guide is written and maintained by DSU faculty, primarily for DSU students in CSC-150, CSC-250 or CSC-300, but may be useful to other students in other classes or universities as well.
 
@@ -26,21 +26,21 @@ Alternatively, if you have a specific problem or question, the next section list
 
 ## Specific problems and questions
 
- - **Q:** Help! My program compiles fine, but does something unexpected or wrong when run.
+ - **Q:** Help! My program compiles fine, but doesn't behave the way I think it should.
 
-   **A:** Sounds like a problem with your code structure or algorithm. If you haven't already, consider [beautifying](howto/beautify.md) your code, which will make it easier to reason about.
+   **A:** This might be a problem with your code structure or algorithm. If you haven't already, consider [beautifying](howto/beautify.md) your code, which will make it easier to reason about.
 
  - **Q:** Help! My program says "Segmentation fault" and crashes.
 
    **A:** Likely a memory corruption bug.  Try [GDB](howto/gdb.md), [Valgrind](howto/valgrind.md), or [ASAN](howto/asan.md).
 
- - **Q:** Help! My program prints _junk_ data.
+ - **Q:** Help! My program prints _junk_ data
 
-   **A:** Sounds like you may be using an uninitialized variable, or printing from invalid memory.  Try [scan-build](howto/scan-build.md) to identify potential causes.  [Valgrind](howto/valgrind.md) or [ASAN](howto/asan.md) might also be able to detect where/why this is happening at runtime.
+   **A:** Sounds like you may be using an uninitialized variable, or printing from invalid memory.  Try [scan-build](howto/scan-build.md) to identify potential causes.  [Valgrind](howto/valgrind.md) or [ASAN](howto/asan.md) might also be able to detect where/why this is happening at run time.
 
  - **Q:** Help!  My program locks up or runs forever.
 
-   **A:** This may be an infinite loop.  Try [scan-build](howto/scan-build.md) to identify potential causes.
+   **A:** This may be an infinite loop.  Try running the program in [GDB](howto/gdb.md) up to the point it gets stuck, then press `CTRL + C` to pause it, allowing you to see what part of the code it's stuck in.
 
 ## Questions or suggestions
 

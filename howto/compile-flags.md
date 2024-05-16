@@ -23,7 +23,7 @@ int main() {
 }
 ```
 
-This code looks reasonable at first, but upon closer inspection note the missing ampersand (`&`) in the `scanf()` function call.  A common mistake amongst newer C programmers. By default GCC will silently allow this, and it will result in a segmentation fault at runtime.
+This code looks reasonable at first, but upon closer inspection note the missing ampersand (`&`) in the `scanf()` function call.  A common mistake amongst newer C programmers. By default GCC will silently allow this, and it will result in a segmentation fault at run time.
 
 ```
 andrew@dev:~$ gcc example.c
