@@ -16,7 +16,7 @@ You can also run CPPCheck over an entire project directory.  In this case it wil
 cppcheck ./myproject/
 ```
 
-Or each just:
+Or even just:
 
 ```
 cppcheck .
