@@ -48,7 +48,7 @@ This resource is primarily maintained by Andrew Kramer (andrew.kramer at dsu dot
 
 Pull requests are also welcome!  This is a living document.  If you see a way to improve this guide, please send us a PR!
 
-### Ideas to improve this document
+### Ideas to improve this document (TODO's)
 
 The following is a list of ideas which may improve this document but haven't yet been fully explored.  If you have time and knowledge and want to help contribute to this guide, these would be good places to start!  Feel free to add to this list as well.
 
@@ -60,3 +60,4 @@ The following is a list of ideas which may improve this document but haven't yet
 
  - Is there a more effective way to organize and present these tools so they don't feel overwhelming to students?
 
+ - Add "further reading" sections to each page, with links to useful resources or tutorials.

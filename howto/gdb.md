@@ -135,7 +135,7 @@ If instead you would like to allow the program to continue on until it hits the 
 
 ## Making GDB more user friendly
 
-TODO (GEF, PEDA, etc) ?
+TODO (GDB-TUI, GEF, PEDA, etc) ?
 
 ## Requirements
 
