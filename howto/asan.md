@@ -150,5 +150,5 @@ Note that ASAN may not be installed by default!  If you are using the `cs.dsunix
 
  - Debian/Ubuntu: `sudo apt install clang clang-tools`
  - Fedora/Redhat/CentOS: `sudo dnf install clang clang-tools-extra`
- - Arch: `TODO`
+ - Arch: `sudo pacman -S clang`
 
