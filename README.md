@@ -20,7 +20,7 @@ The tools below are all explained and demonstrated in this guide.  If you'd just
  - [Run with Valgrind to detect heap memory corruption](guides/valgrind.md).
  - [Compile with ASAN to detect memory corruption](guides/asan.md).
  - [Compile with scan-build to detect subtle bugs](guides/scan-build.md).
- - [Run CCPCheck to detect subtle bugs](guides.md).
+ - [Run CCPCheck to detect subtle bugs](guides/cppcheck.md).
 
 Alternatively, if you have a specific problem or question, the next section lists common problems that students encounter and links to specific resources that might be helpful to resolve it.  If you need immediate help on a specific issue, check the list below for the relevant guide(s).
 
