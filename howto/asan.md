@@ -148,7 +148,7 @@ Aha! The answer is suddenly obvious.  In order for this to occur, the for-loop m
 
 Note that ASAN may not be installed by default!  If you are using the `cs.dsunix.net` or `dev.hostbin.org` machines, you may need to request that they be installed; ask your teacher. However if you wish to use ASAN on your own machine you should be able to install it by running one of the following commands (depending on your operating system).
 
- - Debian/Ubuntu: `sudo apt install clang-tools`
- - Fedora/Redhat/CentOS: `TODO`
+ - Debian/Ubuntu: `sudo apt install clang clang-tools`
+ - Fedora/Redhat/CentOS: `sudo dnf install clang clang-tools-extra`
  - Arch: `TODO`
 

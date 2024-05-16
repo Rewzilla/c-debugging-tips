@@ -136,3 +136,12 @@ If instead you would like to allow the program to continue on until it hits the 
 ## Making GDB more user friendly
 
 TODO (GEF, PEDA, etc) ?
+
+## Requirements
+
+Note that GDB may not be installed by default!  If you are using the `cs.dsunix.net` or `dev.hostbin.org` machines, you may need to request that they be installed; ask your teacher. However if you wish to run GDB on your own machine you should be able to install it by running one of the following commands (depending on your operating system).
+
+ - Debian/Ubuntu: `sudo apt install gdb`
+ - Fedora/Redhat/CentOS: `sudo dnf install gdb`
+ - Arch: `sudo pacman -S gdb`
+

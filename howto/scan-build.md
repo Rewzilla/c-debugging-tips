@@ -162,5 +162,5 @@ This clearly lays out what the problem is and how it might occur.  We can now ta
 Note that scan-build may not be installed by default!  If you are using the `cs.dsunix.net` or `dev.hostbin.org` machines, you may need to request that they be installed; ask your teacher. However if you wish to use scan-build on your own machine you should be able to install it by running one of the following commands (depending on your operating system).
 
  - Debian/Ubuntu: `sudo apt install clang-tools`
- - Fedora/Redhat/CentOS: `TODO`
- - Arch: `TODO`
+ - Fedora/Redhat/CentOS: `sudo apt install clang clang-tools-extra`
+ - Arch: `sudo pacman -S clang`

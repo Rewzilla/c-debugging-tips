@@ -164,6 +164,6 @@ Aha, looks like a second occurrence of the same bug! Another simple off-by-one m
 Note that Valgrind may not be installed by default!  If you are using the `cs.dsunix.net` or `dev.hostbin.org` machines, you may need to request that they be installed; ask your teacher. However if you wish to run Valgrind on your own machine you should be able to install it by running one of the following commands (depending on your operating system).
 
  - Debian/Ubuntu: `sudo apt install valgrind`
- - Fedora/Redhat/CentOS: `TODO`
- - Arch: `TODO`
+ - Fedora/Redhat/CentOS: `sudo dnf install valgrind`
+ - Arch: `sudo pacman -S valgrind`
 
