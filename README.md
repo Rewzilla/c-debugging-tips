@@ -30,7 +30,7 @@ Alternatively, if you have a specific problem or question, the next section list
 
    **A:** This might be a problem with your code structure or algorithm. If you haven't already, consider [beautifying](howto/beautify.md) your code, which will make it easier to reason about.
 
- - **Q:** Help! My program says "Segmentation fault" and crashes.
+ - **Q:** Help! My program says "Segmentation fault", "Aborted", or some other cryptic error and crashes.
 
    **A:** Likely a memory corruption bug.  Try [GDB](howto/gdb.md), [Valgrind](howto/valgrind.md), or [ASAN](howto/asan.md).
 
@@ -48,4 +48,15 @@ This resource is primarily maintained by Andrew Kramer (andrew.kramer at dsu dot
 
 Pull requests are also welcome!  This is a living document.  If you see a way to improve this guide, please send us a PR!
 
-Thanks and happy debugging!
+### Ideas to improve this document
+
+The following is a list of ideas which may improve this document but haven't yet been fully explored.  If you have time and knowledge and want to help contribute to this guide, these would be good places to start!  Feel free to add to this list as well.
+
+ - Are there other tools that really should be included here?
+
+ - Would it be useful to include the MemorySanitizer (MSAN) and UndefinedBehaviorSanitizer (UBSAN) in addition to the AddressSanitizer (ASAN)?
+
+ - Is there a better way to root-cause infinite loops than just breaking in GDB?
+
+ - Is there a more effective way to organize and present these tools so they don't feel overwhelming to students?
+
