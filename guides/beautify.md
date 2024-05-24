@@ -106,5 +106,5 @@ Note that this will alter the file, and will not store a backup of the original!
 Note that these may not be installed by default!  If you are using the `cs.dsunix.net` or `dev.hostbin.org` machines, you may need to request that they be installed; ask your teacher. However if you wish to run these on your own machine you should be able to install them by running one of the following commands (depending on your operating system).
 
  - Debian/Ubuntu: `sudo apt install indent astyle clang-format`
- - Fedora/Redhat/CentOS: `sudo dns install indent astyle clang clang-tools-extra`
+ - Fedora/Redhat/CentOS: `sudo dnf install indent astyle clang clang-tools-extra`
  - Arch: `sudo pacman -S indent astyle clang`
